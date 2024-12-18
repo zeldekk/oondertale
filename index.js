@@ -1,8 +1,10 @@
 const canvas = document.getElementById("game");
 const context = canvas.getContext("2d");
 const fps = 100;
-let playerX = canvas.clientWidth/2;
-let playerY = canvas.clientHeight/2;
+let screenX = canvas.clientWidth/2;
+let screenY = canvas.clientHeight/2;
+let roomX = 1000;
+let roomY = 1000;
 const playerWidth = 50;
 const playerHeigth = 75;
 let goingLeft = false;
@@ -27,10 +29,10 @@ function gameLogic() {
 }
 
 function movementLogic() {
-    if (goingLeft) playerX -= playerSpeed;
-    if (goingRight) playerX += playerSpeed;
-    if (goingUp) playerY -= playerSpeed;
-    if (goingDown) playerY += playerSpeed;
+    if (goingLeft) screenY -= playerSpeed;
+    if (goingRight) screenY += playerSpeed;
+    if (goingUp) screenY -= playerSpeed;
+    if (goingDown) screenY += playerSpeed;
 }
 
 function screen() {
@@ -38,7 +40,7 @@ function screen() {
     context.fillRect(0, 0, canvas.clientWidth, canvas.clientWidth);
 
     context.fillStyle = "rgb(255 0 0)";
-    context.fillRect(playerX, playerY, playerWidth, playerHeigth);
+    context.fillRect(screenY, screenY, playerWidth, playerHeigth);
 }
 
 function keydown(evt) {
